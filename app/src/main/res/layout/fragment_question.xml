@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".QuestionFragment">
+
+    <TextView
+        android:id="@+id/questionTextView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="150dp"
+        android:layout_marginEnd="40dp"
+        android:justificationMode="inter_word"
+        android:lineSpacingExtra="2dp"
+        android:textColor="@color/black"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="Часто бывает так, что смысл текста не имеет большого значения, а важен только его объем или структура. Генератор текста онлайн позволит задать необходимое количество слов, из которых будут сформировано указанное Вами число абзацев. Правда, смысл сгенерированный текст иметь не будет, но ведь этого нам и не требуется! " />
+
+    <TextView
+        android:id="@+id/currentTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/black"
+        android:textSize="20dp"
+        app:layout_constraintEnd_toStartOf="@id/slashTextView"
+        app:layout_constraintTop_toTopOf="@id/slashTextView"
+        tools:text="2"
+
+
+        />
+
+    <TextView
+        android:id="@+id/slashTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/black"
+        android:textSize="20dp"
+        app:layout_constraintEnd_toStartOf="@id/allTextView"
+        app:layout_constraintTop_toTopOf="@id/allTextView"
+        tools:text="/"
+
+        />
+
+    <TextView
+        android:id="@+id/allTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="30dp"
+        android:textColor="@color/black"
+        android:textSize="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="10" />
+
+    <RadioGroup
+        android:id="@+id/radios"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginEnd="50dp"
+        android:orientation="vertical"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/questionTextView"
+
+        >
+
+        <RadioButton
+            android:id="@+id/firstAnswerRadioButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:text="1" />
+
+        <RadioButton
+            android:id="@+id/secondAnswerRadioButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:text="2" />
+
+        <RadioButton
+            android:id="@+id/thirdAnswerRadioButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:text="3" />
+
+        <RadioButton
+            android:id="@+id/fourthAnswerRadioButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:text="4" />
+    </RadioGroup>
+
+    <Button
+
+        android:id="@+id/prevButton"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:backgroundTint="#FF6D00"
+        android:text="@string/back"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/guideline2"
+        app:layout_constraintHorizontal_bias="0.0"
+        android:layout_margin="10dp"
+        app:layout_constraintStart_toStartOf="parent"
+
+        />
+
+    <Button
+
+        android:id="@+id/nextButton"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:backgroundTint="#FF6D00"
+        android:text="@string/next"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@+id/guideline2"
+        android:layout_margin="10dp"
+        />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.5" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

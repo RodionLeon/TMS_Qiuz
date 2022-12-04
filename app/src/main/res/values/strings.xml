@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">TMS_Quiz</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="back">Back</string>
+    <string name="next">Next</string>
+    <string name="share">Share</string>
+    <string name="restart">Restart</string>
+    <string name="exit">Exit</string>
 </resources>
