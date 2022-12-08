@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".QuestionFragment">
+    tools:context=".ui.QuestionFragment">
 
 
     <TextView
@@ -50,37 +50,39 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="50dp"
         android:textColor="@color/black"
+        android:textSize="35dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/slashTextView"
-        tools:text = "good Job"
-        android:textSize="35dp"/>
+        tools:text="good Job" />
+
     <Button
 
         android:id="@+id/restartButton"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_margin="10dp"
         android:backgroundTint="#00C853"
         android:text="@string/restart"
+        android:textAllCaps="false"
         android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/guideline2"
-        android:layout_margin="10dp"
-        app:layout_constraintStart_toStartOf="parent"
-        android:textAllCaps="false"/>
+        app:layout_constraintStart_toStartOf="parent" />
+
     <Button
 
         android:id="@+id/shareButton"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_margin="10dp"
         android:backgroundTint="#2962FF"
         android:text="@string/share"
+        android:textAllCaps="false"
         android:textSize="13sp"
-        android:layout_margin="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/guideline2"
-        android:textAllCaps="false"/>
+        app:layout_constraintStart_toStartOf="@+id/guideline2" />
 
     <Button
 
@@ -91,7 +93,6 @@
         android:backgroundTint="#D50000"
         android:text="@string/exit"
         android:textAllCaps="false"
-
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="@id/guideline1"
         app:layout_constraintStart_toStartOf="parent"
@@ -103,6 +104,7 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         app:layout_constraintGuide_percent="0.25" />
+
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline2"
         android:layout_width="wrap_content"
