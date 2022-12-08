@@ -2,10 +2,9 @@ package com.example.tms_quiz.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import androidx.lifecycle.ViewModelProvider
 import com.example.tms_quiz.R
-import com.example.tms_quiz.viewmodels.MyApplication
+import com.example.tms_quiz.MyApplication
 import com.example.tms_quiz.viewmodels.QuizViewModel
 import com.example.tms_quiz.viewmodels.QuizViewModelFactory
 

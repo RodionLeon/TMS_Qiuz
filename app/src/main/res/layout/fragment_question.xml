@@ -43,7 +43,7 @@
         android:textSize="20dp"
         app:layout_constraintEnd_toStartOf="@id/allTextView"
         app:layout_constraintTop_toTopOf="@id/allTextView"
-        tools:text="/"
+        android:text="@string/slash"
 
         />
 

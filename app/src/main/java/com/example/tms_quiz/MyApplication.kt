@@ -1,4 +1,4 @@
-package com.example.tms_quiz.viewmodels
+package com.example.tms_quiz
 
 import android.app.Application
 import com.example.tms_quiz.model.Repo

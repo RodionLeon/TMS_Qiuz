@@ -38,15 +38,102 @@ class QuestionFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.nextButton.setOnClickListener {
-            viewModel.cn.value = viewModel.cn.value!! + 1
-            // findNavController().navigate(R.id.action_questionFragment_to_quizResultFragment)
+        setupObservers()
+        setupViews()
+
+    }
+
+    private fun setupViews() {
+        binding.prevButton.setOnClickListener {
+            viewModel.saveUserAnswer()
+            viewModel.loadPreviousQuestion()
 
         }
+        binding.allTextView.text = viewModel.getQuestionsAmount().toString()
+        viewModel.loadCurrentQuestion()
 
-        viewModel.cn.observe(requireActivity()) { number ->
-            binding.currentTextView.text = number.toString()
+        binding.radios.setOnCheckedChangeListener { group, checkedId ->
+            when (checkedId) {
+                R.id.firstAnswerRadioButton -> {
+                    viewModel.userAnswer = 1
+
+                }
+                R.id.secondAnswerRadioButton -> {
+                    viewModel.userAnswer = 2
+
+                }
+                R.id.thirdAnswerRadioButton -> {
+                    viewModel.userAnswer = 3
+
+                }
+                R.id.fourthAnswerRadioButton -> {
+                    viewModel.userAnswer = 4
+
+                }
+            }
         }
+    }
+
+    private fun setupObservers() {
+        viewModel.currentQuestionId.observe(viewLifecycleOwner) { questionNumber ->
+
+            binding.prevButton.isEnabled = questionNumber != 0
+            if (questionNumber == viewModel.getQuestionsAmount() - 1) {
+                binding.nextButton.text = "Finish"
+                binding.nextButton.setOnClickListener {
+                    findNavController().navigate(R.id.action_questionFragment_to_quizResultFragment)
+                }
+            } else {
+                binding.nextButton.text = "Next"
+                binding.nextButton.setOnClickListener {
+                    viewModel.saveUserAnswer()
+                    viewModel.loadNextQuestion()
+
+                }
+            }
+            binding.currentTextView.text = (questionNumber + 1).toString()
+            setupAnswers(questionNumber)
+            loadUserAnswerIfExistQuestion(questionNumber)
+        }
+        viewModel.currentQuestion.observe(viewLifecycleOwner) { question ->
+            binding.questionTextView.text = question
+            loadUserAnswerIfExistQuestion(viewModel.currentQuestionId.value!!)
+        }
+    }
+
+    private fun loadUserAnswerIfExistQuestion(questionNumber: Int) {
+        when (viewModel.userAnswers[questionNumber]) {
+            1 -> {
+                binding.radios.check(R.id.firstAnswerRadioButton)
+                viewModel.userAnswer = 1
+            }
+            2 -> {
+                binding.radios.check(R.id.secondAnswerRadioButton)
+                viewModel.userAnswer = 2
+            }
+            3 -> {
+                binding.radios.check(R.id.thirdAnswerRadioButton)
+                viewModel.userAnswer = 3
+            }
+            4 -> {
+                binding.radios.check(R.id.fourthAnswerRadioButton)
+                viewModel.userAnswer = 4
+            }
+            else -> {
+                binding.radios.clearCheck()
+                viewModel.userAnswer = -1
+            }
+
+        }
+    }
+
+    private fun setupAnswers(questionNumber: Int) {
+        val answers = viewModel.loadAnswers(questionNumber)
+        binding.firstAnswerRadioButton.text = answers[0]
+        binding.secondAnswerRadioButton.text = answers[1]
+        binding.thirdAnswerRadioButton.text = answers[2]
+        binding.fourthAnswerRadioButton.text = answers[3]
+
     }
 
     override fun onDestroyView() {
