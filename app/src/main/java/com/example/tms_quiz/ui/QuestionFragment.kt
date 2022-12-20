@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.example.tms_quiz.R
@@ -15,16 +16,11 @@ import dagger.hilt.android.AndroidEntryPoint
 @AndroidEntryPoint
 class QuestionFragment : Fragment() {
     private var _binding: FragmentQuestionBinding? = null
-
-    // This property is only valid between onCreateView and
-// onDestroyView.
     private val binding get() = _binding!!
 
-    private val viewModel: QuizViewModel by viewModels()
+    private val viewModel: QuizViewModel by activityViewModels()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
-
     }
 
 
@@ -33,7 +29,6 @@ class QuestionFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-
         _binding = FragmentQuestionBinding.inflate(inflater, container, false)
         return binding.root
     }
@@ -83,6 +78,7 @@ class QuestionFragment : Fragment() {
             if (questionNumber == viewModel.getQuestionsAmount() - 1) {
                 binding.nextButton.text = "Finish"
                 binding.nextButton.setOnClickListener {
+                    viewModel.saveUserAnswer()
                     findNavController().navigate(R.id.action_questionFragment_to_quizResultFragment)
                 }
             } else {

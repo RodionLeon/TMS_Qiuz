@@ -13,5 +13,5 @@ class Repo @Inject constructor(){
         arrayListOf("Пагода Шве Дагон","Ангкор-Ват","Фусими Инари Тайша","Джокьякарта"),
         arrayListOf("Центральноафриканская Республика","Суринам","Мьянма","Йемен")
     )
-    val answerId = arrayListOf(1,0,1,2)
+    val answerId = arrayListOf(2,1,2,3)
 }

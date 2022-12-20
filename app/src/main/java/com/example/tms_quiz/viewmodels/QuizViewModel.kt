@@ -11,7 +11,7 @@ class QuizViewModel @Inject constructor(private val repo: Repo) : ViewModel() {
     val currentQuestionId = MutableLiveData<Int>(0)
     val currentQuestion = MutableLiveData<String>()
     var userAnswer = -1
-    var userAnswers = Array<Int>(getQuestionsAmount()){0}
+    var userAnswers = Array<Int>(getQuestionsAmount()) { 0 }
 
 
     fun getQuestionsAmount() = repo.data.size
@@ -37,5 +37,42 @@ class QuizViewModel @Inject constructor(private val repo: Repo) : ViewModel() {
 
     fun loadCurrentQuestion() {
         currentQuestion.value = repo.data[currentQuestionId.value!!]
+    }
+
+    fun getRightAmount(): Int {
+        var  correctAnswers = 0
+        for(i in userAnswers.indices)
+        {
+            if(userAnswers[i] == repo.answerId[i]){
+                correctAnswers ++
+            }
+        }
+        return correctAnswers
+    }
+
+    fun getComment(): CharSequence? {
+        val res = getRightAmount()
+
+        return if (res == getQuestionsAmount()) {
+            "Perfect!!!"
+        } else if (res > getQuestionsAmount() * 2 / 3) {
+            "Nice job!!"
+        } else if (res > getQuestionsAmount() * 1 / 3) {
+            "Not bad"
+        } else "try again..."
+
+    }
+
+    fun restartQuiz() {
+        currentQuestionId.postValue(0)
+        userAnswer = -1
+        for( i in userAnswers.indices)
+        {
+            userAnswers[i] = -1
+        }
+    }
+
+    fun getResultMessage(): String {
+        return "Hey, take challenge in quiz, where i got ${getRightAmount()} / ${getQuestionsAmount()}! "
     }
 }
