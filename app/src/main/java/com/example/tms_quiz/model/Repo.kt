@@ -1,6 +1,8 @@
 package com.example.tms_quiz.model
 
-class Repo {
+import javax.inject.Inject
+
+class Repo @Inject constructor(){
     val data = arrayListOf("Какого цвета звезды на флаге Новой Зеландии?",
         "В центре какого флага изображено 24-спицевое колесо Ашока",
         "Как называется культовое здание на камбоджийском флаге?",

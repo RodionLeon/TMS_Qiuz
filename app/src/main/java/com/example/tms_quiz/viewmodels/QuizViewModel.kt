@@ -3,8 +3,11 @@ package com.example.tms_quiz.viewmodels
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.tms_quiz.model.Repo
+import dagger.hilt.android.lifecycle.HiltViewModel
+import javax.inject.Inject
 
-class QuizViewModel(private val repo: Repo) : ViewModel() {
+@HiltViewModel
+class QuizViewModel @Inject constructor(private val repo: Repo) : ViewModel() {
     val currentQuestionId = MutableLiveData<Int>(0)
     val currentQuestion = MutableLiveData<String>()
     var userAnswer = -1
